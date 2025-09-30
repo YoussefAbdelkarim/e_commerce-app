@@ -1,0 +1,37 @@
+{
+"products": [
+{
+"id": 1,
+"title": "Minimal Wireless Headphones",
+"description": "Comfortable over-ear Bluetooth headphones with 30h battery.",
+"price": 89.99,
+"image": "/images/headphones.jpg",
+"category": "audio",
+"rating": 4.5,
+"stock": 12,
+"favourite": false
+},
+{
+"id": 2,
+"title": "Compact Mechanical Keyboard",
+"description": "75% mechanical keyboard with hot-swap switches.",
+"price": 129.99,
+"image": "/images/keyboard.jpg",
+"category": "peripherals",
+"rating": 4.7,
+"stock": 7,
+"favourite": false
+},
+{
+"id": 3,
+"title": "4K Monitor 27\"",
+"description": "27 inch 4K IPS monitor, 60Hz, great colors.",
+"price": 329.99,
+"image": "/images/monitor.jpg",
+"category": "displays",
+"rating": 4.6,
+"stock": 5,
+"favourite": false
+}
+]
+}
