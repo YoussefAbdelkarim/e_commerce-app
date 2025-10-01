@@ -1,44 +1,68 @@
 'use client';
+
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store';
-import { removeItem, updateQuantity } from '../../store/slices/cartSlice';
+import { Box, Button, TextField, Typography, Stack } from '@mui/material';
+import { useCart } from '../../hooks/useCart';
+import { useTranslations } from '../../hooks/useTranslations';
 
 export default function CartPage() {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-  const dispatch = useDispatch();
+  const { cart, update, remove, clear } = useCart();
+  const t = useTranslations();
 
   return (
-    <div style={{ padding: '16px' }}>
-      {cartItems.length === 0 ? (
-        'Cart is empty'
+    <Box sx={{ p: 2 }}>
+      <Typography variant="h4" gutterBottom>
+        {t('cart')}
+      </Typography>
+
+      {cart.length === 0 ? (
+        <Typography>{t('cartEmpty') || 'Cart is empty'}</Typography>
       ) : (
-        cartItems.map((item) => (
-          <div
-            key={item.productId}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              border: '1px solid #ccc',
-              borderRadius: '6px',
-              padding: '8px',
-              marginBottom: '8px',
-            }}
+        <Stack spacing={2}>
+          {cart.map((item: any) => (
+            <Box
+              key={item.productId}
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                border: '1px solid #ccc',
+                borderRadius: '6px',
+                p: 1,
+              }}
+            >
+              <Typography>{item.name}</Typography>
+
+              <TextField
+                type="number"
+                value={item.quantity}
+                size="small"
+                sx={{ width: '60px' }}
+                onChange={(e) =>
+                  update({ ...item, quantity: Number(e.target.value) })
+                }
+              />
+
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => remove(item.productId)}
+              >
+                {t('remove')}
+              </Button>
+            </Box>
+          ))}
+
+          <Button
+            variant="outlined"
+            color="error"
+            sx={{ mt: 2 }}
+            onClick={clear}
           >
-            <div>{item.name}</div>
-            <input
-              type="number"
-              value={item.quantity}
-              style={{ width: '60px' }}
-              onChange={(e) =>
-                dispatch(updateQuantity({ ...item, quantity: Number(e.target.value) }))
-              }
-            />
-            <button onClick={() => dispatch(removeItem(item.productId))}>Remove</button>
-          </div>
-        ))
+            {t('clearCart')}
+          </Button>
+        </Stack>
       )}
-    </div>
+    </Box>
   );
 }

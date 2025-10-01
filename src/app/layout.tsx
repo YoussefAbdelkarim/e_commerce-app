@@ -1,16 +1,18 @@
-'use client';
-import React from 'react';
+// src/app/layout.tsx
 import Providers from '../providers/Providers';
-import Header from '../presentation/organisms/Header';
 import '../styles/globals.css';
+
+export const metadata = {
+  title: 'E-Commerce App',
+  description: 'Built with Next.js, Redux, and next-intl',
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body>
         <Providers>
-          <Header />
-          <main>{children}</main>
+          {children}
         </Providers>
       </body>
     </html>

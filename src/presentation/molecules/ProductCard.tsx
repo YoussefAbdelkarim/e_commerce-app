@@ -5,7 +5,11 @@ import { addItem } from '../../store/slices/cartSlice';
 import { toggleFavourite } from '../../store/slices/favouritesSlice';
 
 interface ProductCardProps {
-  product: any;
+  product: {
+    id: number;
+    name: string;
+    price: number;
+  };
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
@@ -28,7 +32,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div style={{ fontWeight: 'bold' }}>{product.name}</div>
       <div>${product.price}</div>
       <div style={{ display: 'flex', gap: '8px' }}>
-        <button onClick={() => dispatch(addItem({ ...product, quantity: 1 }))}>
+        <button onClick={() => dispatch(addItem({ productId: product.id, name: product.name, price: product.price, quantity: 1 }))}>
           Add
         </button>
         <button onClick={() => dispatch(toggleFavourite(product.id))}>Fav</button>

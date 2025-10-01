@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+// اربط الملف اللي أنشأناه (next-intl.config.ts)
+const withNextIntl = createNextIntlPlugin("./next-intl.config.ts");
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  reactStrictMode: true
+  // تقدر تضيف خيارات ثانية هنا
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

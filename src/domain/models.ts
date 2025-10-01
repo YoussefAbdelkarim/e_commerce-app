@@ -14,7 +14,7 @@ favourite?: boolean;
 
 export interface CartItem {
 productId: number;
-  name: string;      // add this
-  price: number;     // optional if you want
+  name: string;     
+  price: number;     
   quantity: number;
 }

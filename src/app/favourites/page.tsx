@@ -1,16 +1,18 @@
 'use client';
+
 import React from 'react';
+import ProductCard from '../../presentation/molecules/ProductCard';
+import { useFavourites } from '../../hooks/useFavourites';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import ProductCard from '../../presentation/molecules/ProductCard';
 
 export default function FavouritesPage() {
-  const favouriteIds = useSelector((state: RootState) => state.favourites.ids);
+  const { favourites } = useFavourites(); // use the custom hook
   const products = useSelector((state: RootState) =>
-    state.cart.items.map((i) => i) // just example
+    state.cart.items.map((i) => i) // replace with your real products if needed
   );
 
-  const favouriteProducts = products.filter((p: any) => favouriteIds.includes(p.id));
+  const favouriteProducts = products.filter((p: any) => favourites.includes(p.id));
 
   return (
     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', padding: '16px' }}>
