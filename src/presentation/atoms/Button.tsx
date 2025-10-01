@@ -12,7 +12,7 @@ export default function Button({ children, ...props }: ButtonProps) {
         padding: '6px 12px',
         border: 'none',
         borderRadius: '6px',
-        backgroundColor: '#1976d2',
+        backgroundColor: '#020303ff',
         color: 'white',
       }}
       {...props}

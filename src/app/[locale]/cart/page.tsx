@@ -2,8 +2,8 @@
 
 import React from 'react';
 import { Box, Button, TextField, Typography, Stack } from '@mui/material';
-import { useCart } from '../../hooks/useCart';
-import { useTranslations } from '../../hooks/useTranslations';
+import { useCart } from '../../../hooks/useCart';
+import { useTranslations } from '../../../hooks/useTranslations';
 
 export default function CartPage() {
   const { cart, update, remove, clear } = useCart();

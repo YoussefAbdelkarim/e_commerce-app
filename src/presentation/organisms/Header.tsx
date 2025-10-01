@@ -2,10 +2,18 @@
 import React from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Header() {
   const locale = useLocale(); // ✅ get the current locale
 
+   const router = useRouter();
+  const pathname = usePathname();
+
+   const toggleLocale = () => {
+    const newLocale = locale === 'en' ? 'ar' : 'en';
+    router.push(`/${newLocale}${pathname.replace(/^\/(en|ar)/, '')}`);
+  };
   return (
     <header
       style={{
@@ -22,6 +30,10 @@ export default function Header() {
         <Link href={`/${locale}`}>Home</Link>
         <Link href={`/${locale}/favourites`}>Favourites</Link>
         <Link href={`/${locale}/cart`}>Cart</Link>
+           <button onClick={toggleLocale} style={{ marginLeft: '16px' }}>
+          {locale === 'en' ? 'عربي' : 'EN'}
+          
+        </button>
       </nav>
     </header>
   );
