@@ -13,8 +13,11 @@ favourite?: boolean;
 
 
 export interface CartItem {
-productId: number;
-  name: string;     
-  price: number;     
+ productId: number;
+  title: string;
+  description: string;
+  price: number;
+  rating?: number;
+  image?: string;
   quantity: number;
 }

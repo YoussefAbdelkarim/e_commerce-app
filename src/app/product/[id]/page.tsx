@@ -11,10 +11,12 @@ import { Product } from '../../../domain/models';
 export default function ProductDetailsPage() {
   const params = useParams();
   const productId = Number(params.id);
- const { data: product } = useQuery<Product>({
-  queryKey: ['product', productId],
-  queryFn: () => fetchProductById(productId),
-});
+
+  const { data: product } = useQuery<Product>({
+    queryKey: ['product', productId],
+    queryFn: () => fetchProductById(productId),
+  });
+
   const dispatch = useDispatch();
 
   if (!product) return <div>Loading...</div>;
@@ -29,9 +31,8 @@ export default function ProductDetailsPage() {
           onClick={() =>
             dispatch(
               addItem({
-                productId: product.id,
-                name: product.title,
-                price: product.price,
+                ...product,       
+                productId: product.id, 
                 quantity: 1,
               })
             )
