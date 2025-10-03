@@ -21,7 +21,7 @@ export default function Header() {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '12px 24px',
-        backgroundColor: '#1976d2',
+        backgroundColor: '#570e6c ',
         color: 'white',
       }}
     >
