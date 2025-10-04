@@ -1,7 +1,7 @@
 // src/infrastructure/api.ts
-import { Product } from '@/domain/models';
 
 
+import { Product } from 'domain/models';
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
 
 
